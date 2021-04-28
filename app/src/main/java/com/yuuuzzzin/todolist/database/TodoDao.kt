@@ -10,6 +10,9 @@ interface TodoDao {
     @Query("SELECT * FROM Todo")
     fun getAll() : MutableList<Todo>
 
+    @Query("select * from todo where text like '%' ||:text || '%'")
+    fun Search(text: String) : MutableList<Todo>
+
     @Insert
     fun insert(todo: Todo)
 
