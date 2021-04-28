@@ -4,6 +4,11 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.widget.ActionMenuView
+import android.widget.Button
+import android.widget.SearchView
+import android.widget.Toolbar
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -17,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var todayAdapter : TodoAdapter
     lateinit var viewModel : TodoViewModel
     lateinit var todoList: MutableLiveData<MutableList<Todo>>
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -47,6 +53,41 @@ class MainActivity : AppCompatActivity() {
                 todo_input.setText("")
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        supportActionBar?.setDisplayShowCustomEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setDisplayShowHomeEnabled(false)
+
+        val actionView = layoutInflater.inflate(R.layout.custom_toolbar, null)
+        supportActionBar?.customView = actionView
+
+        val searchView = actionView.findViewById<SearchView>(R.id.button_search)
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                //검색어 입력버튼을 누른 후 내용이 있다면
+                if (query != "" && query != null) {
+                    //검색어를 통해 TodoList를 얻어옴.
+                    todoList.value = viewModel.Search(query)
+                } else {
+                    setList()
+                }
+                return true
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+        })
+
+        //검색 닫기를 누른 후 기본 TodoList로 복귀
+        searchView.setOnCloseListener {
+            setList()
+            false
+        }
+
+        return true
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
