@@ -19,6 +19,10 @@ class TodoViewModel (context: Context) : ViewModel(){
         return todoDao.getAll()
     }
 
+    fun Search(text: String) : MutableList<Todo> {
+        return todoDao.Search(text)
+    }
+
     fun insert(todo: Todo) {
         todoDao.insert(todo)
     }
