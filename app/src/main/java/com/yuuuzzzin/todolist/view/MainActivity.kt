@@ -14,7 +14,6 @@ import com.yuuuzzzin.todolist.R
 import com.yuuuzzzin.todolist.view.adapter.TodoAdapter
 import com.yuuuzzzin.todolist.model.Todo
 import com.yuuuzzzin.todolist.viewmodel.TodoViewModel
-import com.yuuuzzzin.todolist.viewmodel.ViewModelProviderFactory
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -29,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // 액티비티에 연결된 뷰 모델 객체를 참조
-        viewModel = ViewModelProvider(this, ViewModelProviderFactory(this.application))
+        viewModel = ViewModelProvider(this)
             .get(TodoViewModel::class.java)
 
         //recycler view에 보여질 아이템 Room에서 받아오기

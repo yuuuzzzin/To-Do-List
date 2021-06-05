@@ -1,14 +1,16 @@
 package com.yuuuzzzin.todolist.viewmodel
 
+import android.app.Application
 import android.content.Context
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.room.Room
 import com.yuuuzzzin.todolist.model.AppDatabase
 import com.yuuuzzzin.todolist.model.Todo
 
-class TodoViewModel (context: Context) : ViewModel(){
-    private val todoDatabase = Room.databaseBuilder(context, AppDatabase::class.java, "todo")
+class TodoViewModel (application: Application) : AndroidViewModel(application){
+    private val todoDatabase = Room.databaseBuilder(application, AppDatabase::class.java, "todo")
         .allowMainThreadQueries()
         .fallbackToDestructiveMigration()
         .build()
