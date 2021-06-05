@@ -32,7 +32,7 @@
 
 2. 할 일 수정
 
-<img src="https://user-images.githubusercontent.com/57751515/116553640-4e7b5b00-a935-11eb-8400-c743d1bd520a.gif" width="30%">
+<img src="https://user-images.githubusercontent.com/57751515/116553640-4e7b5b00-a935-11eb-8400-c743d1bd520a.gif" width="100">
 
 3. 할 일 검색
    
