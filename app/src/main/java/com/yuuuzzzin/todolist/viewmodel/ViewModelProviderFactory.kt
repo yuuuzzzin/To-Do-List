@@ -1,4 +1,4 @@
-package com.yuuuzzzin.todolist.database
+package com.yuuuzzzin.todolist.viewmodel
 
 import android.content.Context
 import androidx.lifecycle.ViewModel

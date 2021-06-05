@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ic_bg_main"
-    tools:context=".EditActivity">
+    tools:context=".view.EditActivity">
 
     <LinearLayout
         android:orientation="vertical"

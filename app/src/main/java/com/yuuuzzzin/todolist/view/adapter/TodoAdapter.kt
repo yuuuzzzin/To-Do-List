@@ -1,4 +1,4 @@
-package com.yuuuzzzin.todolist
+package com.yuuuzzzin.todolist.view.adapter
 
 import android.app.Activity
 import android.app.AlertDialog
@@ -6,17 +6,17 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Paint
-import android.graphics.Typeface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import androidx.core.app.ActivityCompat.startActivityForResult
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.yuuuzzzin.todolist.database.Todo
-import com.yuuuzzzin.todolist.database.TodoViewModel
+import com.yuuuzzzin.todolist.view.EditActivity
+import com.yuuuzzzin.todolist.R
+import com.yuuuzzzin.todolist.model.Todo
+import com.yuuuzzzin.todolist.viewmodel.TodoViewModel
 import kotlinx.android.synthetic.main.item_todolist.view.*
 
 class TodoAdapter(val context: Context,
@@ -48,7 +48,8 @@ class TodoAdapter(val context: Context,
         holder.todoIsCompleted.isChecked = todo.isCompleted
 
         if (todo.isCompleted) {
-            holder.todoTitle.apply {
+            holder.todoTitle.
+            apply {
                 setTextColor(Color.GRAY)
                 paintFlags = paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
             }

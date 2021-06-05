@@ -1,21 +1,20 @@
-package com.yuuuzzzin.todolist
+package com.yuuuzzzin.todolist.view
 
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
-import android.widget.ActionMenuView
-import android.widget.Button
 import android.widget.SearchView
-import android.widget.Toolbar
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.yuuuzzzin.todolist.database.Todo
-import com.yuuuzzzin.todolist.database.TodoViewModel
-import com.yuuuzzzin.todolist.database.ViewModelProviderFactory
+import com.yuuuzzzin.todolist.R
+import com.yuuuzzzin.todolist.view.adapter.TodoAdapter
+import com.yuuuzzzin.todolist.model.Todo
+import com.yuuuzzzin.todolist.viewmodel.TodoViewModel
+import com.yuuuzzzin.todolist.viewmodel.ViewModelProviderFactory
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -25,9 +24,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // 액티비티에 연결된 뷰 모델 객체를 참조
         viewModel = ViewModelProvider(this, ViewModelProviderFactory(this.application))
             .get(TodoViewModel::class.java)
 

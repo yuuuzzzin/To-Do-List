@@ -1,9 +1,11 @@
-package com.yuuuzzzin.todolist.database
+package com.yuuuzzzin.todolist.viewmodel
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.room.Room
+import com.yuuuzzzin.todolist.model.AppDatabase
+import com.yuuuzzzin.todolist.model.Todo
 
 class TodoViewModel (context: Context) : ViewModel(){
     private val todoDatabase = Room.databaseBuilder(context, AppDatabase::class.java, "todo")
